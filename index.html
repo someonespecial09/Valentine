@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hearts for You ❤️</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: #ffe0e6;
+  }
+  .heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: pink;
+    transform: rotate(45deg);
+    animation: move 6s infinite ease;
+  }
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: pink;
+    border-radius: 50%;
+  }
+  .heart::before {
+    top: -15px;
+    left: 0;
+  }
+  .heart::after {
+    left: 15px;
+    top: 0;
+  }
+  @keyframes move {
+    0% { top: 110%; left: random(); }
+    100% { top: -10%; }
+  }
+</style>
+</head>
+<body>
+<script>
+  for(let i=0;i<30;i++){
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.style.left = Math.random()*100 + "%";
+    h.style.animationDuration = Math.random()*5 + 3 + "s";
+    document.body.appendChild(h);
+  }
+</script>
+</body>
+</html>
