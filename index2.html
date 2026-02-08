@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.page.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1, h2 {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 14px 26px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.3s;
+}
+
+.yes {
+  background: #ff4d6d;
+  color: white;
+}
+
+.no {
+  background: #fff;
+  color: #ff4d6d;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 24px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-110vh); opacity: 0; }
+}
+
+.card {
+  background: rgba(255,255,255,0.2);
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 500px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <h1>Hey Beautiful 💕</h1>
+  <h2>Will you be my Valentine? 💘</h2>
+  <div>
+    <button class="yes" onclick="goToPage(2)">YES 😍</button>
+    <button class="no" onclick="goToPage(99)">NO 🙃</button>
+  </div>
+</div>
+
+<!-- FUNNY NO PAGE -->
+<div class="page" id="page99">
+  <h1>😏 OHH REALLY?</h1>
+  <div class="card">
+    <p>
+      Wrong button detected 🚨<br><br>
+      If you press NO again,  
+      I will:<br><br>
+      📸 Steal all your cute selfies  
+      🍫 Eat your chocolates  
+      🐶 Tell dogs you’re not cute  
+      <br><br>
+      LAST WARNING ⚠️
+    </p>
+    <button class="yes" onclick="goToPage(2)">OK OK YES 😭❤️</button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <h1>YAYYYY 💃💖</h1>
+  <p class="card">
+    You just made me the happiest person alive 🥹❤️  
+    <br><br>
+    This is just the beginning…
+  </p>
+  <button class="yes" onclick="goToPage(3)">Next ➡️</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+  <h2>Why I Love You 💌</h2>
+  <div class="card">
+    <p>
+      ❤️ Your smile makes my bad days better  
+      <br><br>
+      ❤️ You’re cute even when you’re angry  
+      <br><br>
+      ❤️ You make my life colorful  
+      <br><br>
+      ❤️ You are my favorite person
+    </p>
+  </div>
+  <button class="yes" onclick="goToPage(4)">More 🥰</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+  <h2>A Little Promise 🤞</h2>
+  <div class="card">
+    <p>
+      I promise to:<br><br>
+      🌸 Annoy you forever<br>
+      🌸 Support you always<br>
+      🌸 Love you even more every day<br>
+      🌸 Be your safe place ❤️
+    </p>
+  </div>
+  <button class="yes" onclick="goToPage(5)">Final Surprise 🎁</button>
+</div>
+
+<!-- FINAL PAGE -->
+<div class="page" id="page5">
+  <h1>Happy Valentine’s Day ❤️</h1>
+  <div class="card">
+    <p>
+      I may not be perfect,  
+      but my love for you is real, deep,  
+      and forever 💞  
+      <br><br>
+      Thank you for being mine.
+    </p>
+  </div>
+</div>
+
+<script>
+function goToPage(num) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page' + num).classList.add('active');
+}
+
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.innerHTML = '❤️';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
